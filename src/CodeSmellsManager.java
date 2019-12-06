@@ -64,7 +64,9 @@ public class CodeSmellsManager {
         if (smell.type == SMELL.ReturnInLoop && enableSmells.contains(5)) {
             return true;
         }
-  
+        if (smell.type == SMELL.LongConditionals && enableSmells.contains(6)) {
+            return true;
+        }
         return false;
     }
 }

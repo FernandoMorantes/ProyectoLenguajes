@@ -16,9 +16,11 @@ class FunctionCreated {
 public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public static int returnsCounter;
     public static int chainsCounter;
+    public static int conditionalsCounter;
     public static int returnsFunctionLine;
     public static int returnsFunctionColumn;
     public static String returnsFunctionName;
+    public static String conditionalVariable;
     public static ArrayList<FunctionCreated> functionsCreated = new ArrayList<FunctionCreated>();
     public CodeSmellsManager manager;
     VisitorRuby(ArrayList<Integer> _enableSmells) {
@@ -147,6 +149,33 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
             } 
         } 
         return super.visitChildren(ctx); 
+    }
+
+    @Override
+    public T visitIf_statement(RubyParser.If_statementContext ctx) {
+        conditionalsCounter = 0;
+        ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
+        conditionalVariable = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        return visitChildren(ctx);
+    }
+
+    @Override
+    public T visitIf_elsif_statement(RubyParser.If_elsif_statementContext ctx) {
+        ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
+        String auxComparison = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        if(auxComparison.equals(conditionalVariable)){
+            if(conditionalsCounter < 4){
+                conditionalsCounter += 1;
+            }else if(conditionalsCounter == 4){
+                conditionalsCounter += 1;
+                int line = ctx.start.getLine();
+                int column = ctx.start.getCharPositionInLine();
+                String message = "\nMal olor encontrado, condicionales muy largos en Linea: " + line + " Columna: " + column + " para la variable \'" + auxComparison + "\'.\n"
+                        + "Se recomienda la creacion de un objeto, donde pueda mapear las diferentes opciones de la variable, para asi ingresar a estas con mayor eficacia.\n";
+                manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
+            }
+        }
+        return visitChildren(ctx);
     }
 }
 
