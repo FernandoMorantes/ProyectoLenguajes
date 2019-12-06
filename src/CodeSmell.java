@@ -5,6 +5,7 @@
     DeadCodeReturn, //3
     FunctionsNotCalled, //4
     ReturnInLoop, //5
+    LongConditionals, // 6
 }
 
 public class CodeSmell {

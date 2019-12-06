@@ -1,22 +1,17 @@
-def funcUno()
-    if(a==0)
-        a
-    end
-    return a
+if(b == 0)
+    b = 0
+elsif(b == 1)
+    b = 0
+elsif(c == 2)
+    b = 0
+elsif(c == 3)
+    b = 0
+elsif(b == 4)
+    b = 0
+elsif(b == 5)
+    b = 0
+elsif(b == 6)
+    b = 0
+else
+    b = 0
 end
-
-def funcDos()
-    return a
-    a = 7 +9
-end
-
-
-a = 7 +9
-
-funcUno()
-
-if(a==0)
-    a
-end
-
-funcDos()
