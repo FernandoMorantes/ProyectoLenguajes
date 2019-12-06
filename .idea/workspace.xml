@@ -6,11 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="8d5f9c93-3a37-4b6e-b9da-ca2a8dd8943a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/Ruby.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gen/Ruby.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/RubyParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gen/RubyParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/Ruby.interp" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/Ruby.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/Ruby.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/Ruby.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/RubyLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/.antlr/RubyParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/.antlr/RubyParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grammar/Ruby.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/Ruby.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/input/input.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/CodeSmell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/CodeSmell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/CodeSmellsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/CodeSmellsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/SMELL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/SMELL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/Ruby.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/Ruby.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser$CrlfContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser$CrlfContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser$Else_tokenContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser$Else_tokenContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/VisitorRuby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/VisitorRuby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeSmell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeSmell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeSmellsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeSmellsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/VisitorRuby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VisitorRuby.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,7 +38,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state>
               <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
             </state>
           </provider>
@@ -35,10 +47,16 @@
       <file leaf-file-name="VisitorRuby.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/VisitorRuby.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="162" column="36" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="36" />
+            <state relative-caret-position="169">
+              <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#784#801#0" expanded="true" />
+                <element signature="e#870#878#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1197#1198#0" expanded="true" />
+                <element signature="e#1217#1218#0" expanded="true" />
+                <element signature="e#1266#1267#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,8 +65,8 @@
       <file leaf-file-name="Ruby.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grammar/Ruby.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+            <state relative-caret-position="449">
+              <caret line="496" column="17" lean-forward="true" selection-start-line="496" selection-start-column="17" selection-end-line="496" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -215,12 +233,12 @@
       <workItem from="1575564570282" duration="15262000" />
       <workItem from="1575584423401" duration="10609000" />
       <workItem from="1575608059413" duration="576000" />
-      <workItem from="1575647016902" duration="17000" />
+      <workItem from="1575647016902" duration="3269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33400000" />
+    <option name="totallyTimeSpent" value="36652000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -229,6 +247,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Tool Output" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32960895" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -236,7 +255,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.3877095" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.35642457" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -249,7 +268,6 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -306,6 +324,12 @@
           <caret line="162" column="36" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#784#801#0" expanded="true" />
+            <element signature="e#870#878#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -323,6 +347,12 @@
           <caret line="138" column="37" selection-start-line="138" selection-start-column="37" selection-end-line="138" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#784#801#0" expanded="true" />
+            <element signature="e#870#878#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -368,6 +398,12 @@
           <caret line="32" column="17" lean-forward="true" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#784#801#0" expanded="true" />
+            <element signature="e#870#878#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -453,24 +489,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state>
           <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grammar/Ruby.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
+        <state relative-caret-position="449">
+          <caret line="496" column="17" lean-forward="true" selection-start-line="496" selection-start-column="17" selection-end-line="496" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/VisitorRuby.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="162" column="36" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="36" />
+        <state relative-caret-position="169">
+          <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#784#801#0" expanded="true" />
+            <element signature="e#870#878#0" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1197#1198#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
           </folding>
         </state>
       </provider>

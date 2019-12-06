@@ -22,7 +22,12 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public static String returnsFunctionName;
     public static String conditionalVariable;
     public static ArrayList<FunctionCreated> functionsCreated = new ArrayList<FunctionCreated>();
+    public static ArrayList<String> varDeclarated = new ArrayList<String>();
     public CodeSmellsManager manager;
+    public static int methodStartLine;
+    public static int methodStartColumn;
+    public static int methodFinalLine;
+    public static int maxMethodLongitude = 100;
     VisitorRuby(ArrayList<Integer> _enableSmells) {
         manager = new CodeSmellsManager(_enableSmells);
     }
@@ -34,6 +39,8 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         returnsCounter = 0;
         returnsFunctionLine = ctx.start.getLine();
         returnsFunctionColumn = ctx.start.getCharPositionInLine();
+        methodStartLine = ctx.start.getLine();
+        methodStartColumn = ctx.start.getCharPositionInLine();
         returnsFunctionName = ctx.getChild(1).getChild(0).getChild(0).toString();
         FunctionCreated func = new FunctionCreated(returnsFunctionName, returnsFunctionLine, returnsFunctionColumn);
         functionsCreated.add(func);
@@ -102,7 +109,24 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public T visitExpression(RubyParser.ExpressionContext ctx) {
         if((ctx.getChild(0).getClass().toString()).equals("class RubyParser$Function_chainContext")){
             chainsCounter = 0;
+          }
+        return super.visitChildren(ctx);
+    }
+    @Override public T visitLvalue(RubyParser.LvalueContext ctx) {
+        String id = ctx.getChild(0).getChild(0).toString();
+        if(!varDeclarated.contains(id)){
+            varDeclarated.add(id);
+
+            if(id.length() > 10){
+                 int line = ctx.start.getLine();
+                 int column = ctx.start.getCharPositionInLine();
+                  String message = "\nMal olor encontrado, el nombre de la variable " + id+ " es muy largo linea: " + line + " Columna: " + column + "\n"
+                                + "Se recomienda cambiar este identificador por uno mas sencillo, esto hara el codigo mas legible\n";
+                  manager.AddCodeSmell(SMELL.IdTooLong, line, column, message);
+
+            }
         }
+
         return super.visitChildren(ctx);
     }
 
@@ -147,6 +171,16 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
                                 + "Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.\n";
                  manager.AddCodeSmell(SMELL.FunctionsNotCalled, line, column, message);              
             } 
+        }else{
+            RuleContext StmtCtx = ctx.parent.parent;
+            if(StmtCtx.getClass().toString().equals("class RubyParser$Function_definition_bodyContext")){
+                methodFinalLine = ctx.start.getLine();
+                if((methodFinalLine - methodStartLine) > maxMethodLongitude){
+                    String message = "\nMal olor encontrado, la funcion \'" + returnsFunctionName + "\' en linea " + methodStartLine + " Columna: " + methodStartColumn + " Es demasiado larga\n"
+                                + "Se recomienda revisar la funcionalidad de este metodo e intentar dividirlo en varios metodos que trabajen en conjunto.\n";
+                                    manager.AddCodeSmell(SMELL.MethodTooLong, methodStartLine, methodStartColumn, message);
+                }
+            }
         } 
         return super.visitChildren(ctx); 
     }

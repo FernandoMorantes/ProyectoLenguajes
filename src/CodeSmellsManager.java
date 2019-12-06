@@ -67,6 +67,12 @@ public class CodeSmellsManager {
         if (smell.type == SMELL.LongConditionals && enableSmells.contains(6)) {
             return true;
         }
+        if (smell.type == SMELL.MethodTooLong && enableSmells.contains(7)) {
+            return true;
+        }
+        if (smell.type == SMELL.IdTooLong && enableSmells.contains(8)) {
+            return true;
+        }
         return false;
     }
 }

@@ -409,7 +409,7 @@ id_function : ID_FUNCTION;
 terminator : terminator SEMICOLON
            | terminator crlf
            | SEMICOLON
-           | crlf
+           | (crlf)+
            | EOF
            | (crlf)* EOF
            ;
