@@ -1,4 +1,22 @@
-def funcion():
-    print("hola mundo")
+def funcUno()
+    if(a==0)
+        a
+    end
+    return a
+end
 
-funcion()
+def funcDos()
+    return a
+    a = 7 +9
+end
+
+
+a = 7 +9
+
+funcUno()
+
+if(a==0)
+    a
+end
+
+funcDos()

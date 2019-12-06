@@ -17,7 +17,7 @@ public class Main {
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             // Crear el objeto correspondiente al analizador sintáctico que se alimenta a partir del buffer de tokens
             RubyParser parser = new RubyParser(tokens);
-            ParseTree tree = parser.program(); // Iniciar el analisis sintáctico en la regla inicial: programa
+            ParseTree tree = parser.prog(); // Iniciar el analisis sintáctico en la regla inicial: programa
             // ParseTreeWalker walker = new ParseTreeWalker();
             // walker.walk(new ListenerRuby(),tree);
             // System.out.println();

@@ -37,6 +37,16 @@ public interface RubyListener extends ParseTreeListener {
 	 */
 	void exitExpression(RubyParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_chain}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_chain(RubyParser.Function_chainContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_chain}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_chain(RubyParser.Function_chainContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RubyParser#global_get}.
 	 * @param ctx the parse tree
 	 */
@@ -126,6 +136,26 @@ public interface RubyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunction_definition_body(RubyParser.Function_definition_bodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_expression_list(RubyParser.Function_expression_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_expression_list(RubyParser.Function_expression_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_expression(RubyParser.Function_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_expression(RubyParser.Function_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RubyParser#function_definition_header}.
 	 * @param ctx the parse tree
@@ -327,6 +357,66 @@ public interface RubyListener extends ParseTreeListener {
 	 */
 	void exitFor_statement(RubyParser.For_statementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_elsif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_elsif_statement(RubyParser.Function_elsif_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_elsif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_elsif_statement(RubyParser.Function_elsif_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_if_elsif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_if_elsif_statement(RubyParser.Function_if_elsif_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_if_elsif_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_if_elsif_statement(RubyParser.Function_if_elsif_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_if_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_if_statement(RubyParser.Function_if_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_if_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_if_statement(RubyParser.Function_if_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_unless_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_unless_statement(RubyParser.Function_unless_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_unless_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_unless_statement(RubyParser.Function_unless_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_while_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_while_statement(RubyParser.Function_while_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_while_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_while_statement(RubyParser.Function_while_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_for_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_for_statement(RubyParser.Function_for_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_for_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_for_statement(RubyParser.Function_for_statementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link RubyParser#init_expression}.
 	 * @param ctx the parse tree
 	 */
@@ -406,6 +496,46 @@ public interface RubyListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatement_expression_list(RubyParser.Statement_expression_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#statement_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement_expression(RubyParser.Statement_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#statement_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement_expression(RubyParser.Statement_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_statement_body}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_statement_body(RubyParser.Function_statement_bodyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_statement_body}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_statement_body(RubyParser.Function_statement_bodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_statement_expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_statement_expression_list(RubyParser.Function_statement_expression_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_statement_expression_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_statement_expression_list(RubyParser.Function_statement_expression_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link RubyParser#function_statement_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_statement_expression(RubyParser.Function_statement_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link RubyParser#function_statement_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_statement_expression(RubyParser.Function_statement_expressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link RubyParser#assignment}.
 	 * @param ctx the parse tree

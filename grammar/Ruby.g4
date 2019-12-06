@@ -48,11 +48,15 @@ expression : function_definition
            | if_statement
            | unless_statement
            | rvalue
-           | return_statement
            | while_statement
            | for_statement
            | pir_inline
+           | function_chain
            ;
+
+function_chain : (id | function_inline_call) (function_chain)*
+               | DOT (id | function_inline_call)
+               ;
 
 global_get : var_name=lvalue op=ASSIGN global_name=id_global;
 
@@ -70,7 +74,24 @@ pir_expression_list : expression_list;
 
 function_definition : function_definition_header function_definition_body END;
 
-function_definition_body : expression_list;
+function_definition_body : function_expression_list;
+
+function_expression_list : function_expression terminator
+                         | function_expression_list function_expression terminator
+                         | terminator
+                         ;
+
+function_expression : function_inline_call
+                    | require_block
+                    | function_if_statement
+                    | function_unless_statement
+                    | rvalue
+                    | function_while_statement
+                    | function_for_statement
+                    | pir_inline
+                    | return_statement
+                    | function_chain
+                    ;
 
 function_definition_header : DEF function_name crlf
                            | DEF function_name function_definition_params crlf
@@ -131,11 +152,34 @@ unless_statement : UNLESS cond_expression crlf statement_body END
                  | UNLESS cond_expression crlf statement_body elsif_statement END
                  ;
 
-while_statement : WHILE cond_expression crlf statement_body END;
+while_statement : (WHILE | UNTIL) cond_expression crlf statement_body END;
 
 for_statement : FOR LEFT_RBRACKET init_expression SEMICOLON cond_expression SEMICOLON loop_expression RIGHT_RBRACKET crlf statement_body END
               | FOR init_expression SEMICOLON cond_expression SEMICOLON loop_expression crlf statement_body END
               ;
+
+function_elsif_statement : function_if_elsif_statement;
+
+function_if_elsif_statement : ELSIF cond_expression crlf function_statement_body
+                            | ELSIF cond_expression crlf function_statement_body else_token crlf function_statement_body
+                            | ELSIF cond_expression crlf function_statement_body function_if_elsif_statement
+                            ;
+
+function_if_statement : IF cond_expression crlf function_statement_body END
+                      | IF cond_expression crlf function_statement_body else_token crlf function_statement_body END
+                      | IF cond_expression crlf function_statement_body function_elsif_statement END
+                      ;
+
+function_unless_statement : UNLESS cond_expression crlf function_statement_body END
+                          | UNLESS cond_expression crlf function_statement_body else_token crlf function_statement_body END
+                          | UNLESS cond_expression crlf function_statement_body function_elsif_statement END
+                          ;
+
+function_while_statement : (WHILE | UNTIL)  cond_expression crlf function_statement_body END;
+
+function_for_statement : FOR LEFT_RBRACKET init_expression SEMICOLON cond_expression SEMICOLON loop_expression RIGHT_RBRACKET crlf function_statement_body END
+                       | FOR init_expression SEMICOLON cond_expression SEMICOLON loop_expression crlf function_statement_body END
+                       ;
 
 init_expression : for_init_list;
 
@@ -155,13 +199,48 @@ for_loop_list : for_loop_list COMMA all_assignment
 
 statement_body : statement_expression_list;
 
-statement_expression_list : expression terminator
+statement_expression_list : statement_expression terminator
                           | RETRY terminator
                           | break_expression terminator
-                          | statement_expression_list expression terminator
+                          | statement_expression_list statement_expression terminator
                           | statement_expression_list RETRY terminator
                           | statement_expression_list break_expression terminator
                           ;
+
+statement_expression :
+         | function_inline_call
+         | require_block
+         | if_statement
+         | unless_statement
+         | rvalue
+         | while_statement
+         | for_statement
+         | pir_inline
+         | function_chain
+         ;
+
+function_statement_body : function_statement_expression_list;
+
+function_statement_expression_list : function_statement_expression terminator
+                          | RETRY terminator
+                          | break_expression terminator
+                          | function_statement_expression_list function_statement_expression terminator
+                          | function_statement_expression_list RETRY terminator
+                          | function_statement_expression_list break_expression terminator
+                          ;
+
+function_statement_expression :
+         | function_inline_call
+         | require_block
+         | function_if_statement
+         | function_unless_statement
+         | rvalue
+         | function_while_statement
+         | function_for_statement
+         | pir_inline
+         | return_statement
+         | function_chain
+         ;
 
 assignment : var_id=lvalue op=ASSIGN rvalue
            | var_id=lvalue op=( PLUS_ASSIGN | MINUS_ASSIGN | MUL_ASSIGN | DIV_ASSIGN | MOD_ASSIGN | EXP_ASSIGN ) rvalue
@@ -331,6 +410,8 @@ terminator : terminator SEMICOLON
            | terminator crlf
            | SEMICOLON
            | crlf
+           | EOF
+           | (crlf)* EOF
            ;
 
 else_token : ELSE;
@@ -356,6 +437,7 @@ ELSE : 'else';
 ELSIF : 'elsif';
 UNLESS : 'unless';
 WHILE : 'while';
+UNTIL: 'until';
 RETRY : 'retry';
 BREAK : 'break';
 FOR : 'for';
@@ -369,6 +451,7 @@ MUL : '*';
 DIV : '/';
 MOD : '%';
 EXP : '**';
+DOT : '.';
 
 EQUAL : '==';
 NOT_EQUAL : '!=';

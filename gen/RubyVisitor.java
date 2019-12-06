@@ -28,6 +28,12 @@ public interface RubyVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(RubyParser.ExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_chain}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_chain(RubyParser.Function_chainContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RubyParser#global_get}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -81,6 +87,18 @@ public interface RubyVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunction_definition_body(RubyParser.Function_definition_bodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_expression_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_expression_list(RubyParser.Function_expression_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_expression(RubyParser.Function_expressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RubyParser#function_definition_header}.
 	 * @param ctx the parse tree
@@ -202,6 +220,42 @@ public interface RubyVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFor_statement(RubyParser.For_statementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_elsif_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_elsif_statement(RubyParser.Function_elsif_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_if_elsif_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_if_elsif_statement(RubyParser.Function_if_elsif_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_if_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_if_statement(RubyParser.Function_if_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_unless_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_unless_statement(RubyParser.Function_unless_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_while_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_while_statement(RubyParser.Function_while_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_for_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_for_statement(RubyParser.Function_for_statementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link RubyParser#init_expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -249,6 +303,30 @@ public interface RubyVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStatement_expression_list(RubyParser.Statement_expression_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#statement_expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement_expression(RubyParser.Statement_expressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_statement_body}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_statement_body(RubyParser.Function_statement_bodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_statement_expression_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_statement_expression_list(RubyParser.Function_statement_expression_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link RubyParser#function_statement_expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_statement_expression(RubyParser.Function_statement_expressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link RubyParser#assignment}.
 	 * @param ctx the parse tree

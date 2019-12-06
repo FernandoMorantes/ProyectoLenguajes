@@ -22,51 +22,49 @@ public class CodeSmellsManager {
         return false;
     }
 
-    public void AddCodeSmell(SMELL type, int line, int column) {
+    public void AddCodeSmell(SMELL type, int line, int column, String message) {
         CodeSmell codeSmell = new CodeSmell();
         codeSmell.type = type;
         codeSmell.line = line;
         codeSmell.column = column;
+        codeSmell.message = message;
+
 
         if (!isInside(codeSmells, codeSmell)  && (enableSmells.size() < 1 ||  isEnabled(codeSmell))) {
             codeSmells.add(codeSmell);
         }
     }
     public void Print() {
-        String result = "[";
+        String result = "";
         for(int i = 0; i < codeSmells.size(); i ++) {
             CodeSmell smell = codeSmells.get(i);
-            result += "{ \"type\": \"" + smell.type + "\", \"line\": \"" + smell.line + "\", \"column\": \"" + smell.column + "\"}";
-            if (i + 1 < codeSmells.size()) {
-                result += ",";
-            }
+            result += smell.message; 
         }
-        result += "]";
+        result += "\n"; 
+   
 
         System.out.println(result);
     }
+
+
     private boolean isEnabled(CodeSmell smell) {
-        if (smell.type == SMELL.ThatThis && enableSmells.contains(1)) {
+
+        if (smell.type == SMELL.MultipleReturn && enableSmells.contains(1)) {
             return true;
         }
-        if (smell.type == SMELL.ConCat && enableSmells.contains(2)) {
+        if (smell.type == SMELL.ExtremeChains && enableSmells.contains(2)) {
             return true;
         }
-        if (smell.type == SMELL.ExtremeChain && enableSmells.contains(3)) {
+        if (smell.type == SMELL.DeadCodeReturn && enableSmells.contains(3)) {
             return true;
         }
-        if (smell.type == SMELL.AnonymousFunction && enableSmells.contains(4)) {
+        if (smell.type == SMELL.FunctionsNotCalled && enableSmells.contains(4)) {
             return true;
         }
-        if (smell.type == SMELL.Equality && enableSmells.contains(5)) {
+        if (smell.type == SMELL.ReturnInLoop && enableSmells.contains(5)) {
             return true;
         }
-        if (smell.type == SMELL.BrokenPromise && enableSmells.contains(6)) {
-            return true;
-        }
-        if (smell.type == SMELL.MultipleReturn && enableSmells.contains(7)) {
-            return true;
-        }
+  
         return false;
     }
 }
