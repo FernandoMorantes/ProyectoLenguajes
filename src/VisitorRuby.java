@@ -16,7 +16,9 @@ class FunctionCreated {
 public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public static int returnsCounter;
     public static int chainsCounter;
+    public static int conditionalsVariableCounter;
     public static int conditionalsCounter;
+    public static int ifstatementCounter;
     public static int returnsFunctionLine;
     public static int returnsFunctionColumn;
     public static String returnsFunctionName;
@@ -37,6 +39,8 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         returnsFunctionName = ctx.getChild(1).getChild(0).getChild(0).toString();
         FunctionCreated func = new FunctionCreated(returnsFunctionName, returnsFunctionLine, returnsFunctionColumn);
         functionsCreated.add(func);
+
+        ifstatementCounter = 0;
         
         return visitChildren(ctx);
     }
@@ -107,6 +111,12 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     }
 
     @Override
+    public T visitExpression_list(RubyParser.Expression_listContext ctx) {
+        ifstatementCounter = 0;
+        return visitChildren(ctx);
+    }
+
+    @Override
     public T visitFunction_chain(RubyParser.Function_chainContext ctx) {
         if(chainsCounter < 5){
             chainsCounter += 1;
@@ -153,9 +163,20 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
 
     @Override
     public T visitIf_statement(RubyParser.If_statementContext ctx) {
+        conditionalsVariableCounter = 0;
         conditionalsCounter = 0;
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         conditionalVariable = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        if(ifstatementCounter < 4){
+            ifstatementCounter += 1;
+        }else if(ifstatementCounter == 4){
+            ifstatementCounter += 1;
+            int line = ctx.start.getLine();
+            int column = ctx.start.getCharPositionInLine();
+            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable " + "\n"
+                    + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
+            manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
+        }
         return visitChildren(ctx);
     }
 
@@ -163,17 +184,75 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public T visitIf_elsif_statement(RubyParser.If_elsif_statementContext ctx) {
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         String auxComparison = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        System.out.println(auxComparison + " "  + conditionalVariable);
         if(auxComparison.equals(conditionalVariable)){
-            if(conditionalsCounter < 4){
-                conditionalsCounter += 1;
-            }else if(conditionalsCounter == 4){
-                conditionalsCounter += 1;
+            if(conditionalsVariableCounter < 4){
+                conditionalsVariableCounter += 1;
+            }else if(conditionalsVariableCounter == 4){
+                conditionalsVariableCounter += 1;
                 int line = ctx.start.getLine();
                 int column = ctx.start.getCharPositionInLine();
                 String message = "\nMal olor encontrado, condicionales muy largos en Linea: " + line + " Columna: " + column + " para la variable \'" + auxComparison + "\'.\n"
                         + "Se recomienda la creacion de un objeto, donde pueda mapear las diferentes opciones de la variable, para asi ingresar a estas con mayor eficacia.\n";
                 manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
             }
+        }else if(conditionalsCounter < 4 ){
+            conditionalsCounter += 1;
+        }else if(conditionalsCounter == 4){
+            conditionalsCounter += 1;
+            int line = ctx.start.getLine();
+            int column = ctx.start.getCharPositionInLine();
+            String message = "\nMal olor encontrado, condicionales muy largos en Linea: " + line + " Columna: " + column + "\n"
+                    + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
+            manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
+        }
+        return visitChildren(ctx);
+    }
+
+    @Override
+    public T visitFunction_if_statement(RubyParser.Function_if_statementContext ctx) {
+        conditionalsVariableCounter = 0;
+        conditionalsCounter = 0;
+        ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
+        conditionalVariable = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        if(ifstatementCounter < 4){
+            ifstatementCounter += 1;
+        }else if(ifstatementCounter == 4){
+            ifstatementCounter += 1;
+            int line = ctx.start.getLine();
+            int column = ctx.start.getCharPositionInLine();
+            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable " + "\n"
+                    + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
+            manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
+        }
+        return visitChildren(ctx);
+    }
+
+    @Override
+    public T visitFunction_if_elsif_statement(RubyParser.Function_if_elsif_statementContext ctx) {
+        ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
+        String auxComparison = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        System.out.println(auxComparison + " "  + conditionalVariable);
+        if(auxComparison.equals(conditionalVariable)){
+            if(conditionalsVariableCounter < 4){
+                conditionalsVariableCounter += 1;
+            }else if(conditionalsVariableCounter == 4){
+                conditionalsVariableCounter += 1;
+                int line = ctx.start.getLine();
+                int column = ctx.start.getCharPositionInLine();
+                String message = "\nMal olor encontrado, condicionales muy largos en Linea: " + line + " Columna: " + column + " para la variable \'" + auxComparison + "\'.\n"
+                        + "Se recomienda la creacion de un objeto, donde pueda mapear las diferentes opciones de la variable, para asi ingresar a estas con mayor eficacia.\n";
+                manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
+            }
+        }else if(conditionalsCounter < 4 ){
+            conditionalsCounter += 1;
+        }else if(conditionalsCounter == 4){
+            conditionalsCounter += 1;
+            int line = ctx.start.getLine();
+            int column = ctx.start.getCharPositionInLine();
+            String message = "\nMal olor encontrado, condicionales muy largos en Linea: " + line + " Columna: " + column + "\n"
+                    + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
+            manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
         }
         return visitChildren(ctx);
     }
