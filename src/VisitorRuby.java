@@ -52,6 +52,7 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         return visitChildren(ctx);
     }
 
+
     @Override
     public T visitReturn_statement(RubyParser.Return_statementContext ctx) {
         if(returnsCounter == 0 ){
@@ -109,6 +110,55 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         return super.visitChildren(ctx);
     }
 
+    @Override public T visitUnless_statement(RubyParser.Unless_statementContext ctx) {
+
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedStatement(ctx, line, column);
+        return super.visitChildren(ctx); 
+    }
+
+    @Override public T visitWhile_statement(RubyParser.While_statementContext ctx) { 
+       
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedStatement(ctx, line, column);
+        return  super.visitChildren(ctx); 
+    }
+
+    @Override public T visitFor_statement(RubyParser.For_statementContext ctx) { 
+
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedStatement(ctx, line, column);
+        return super.visitChildren(ctx); 
+    }
+
+    @Override public T  visitFunction_unless_statement(RubyParser.Function_unless_statementContext ctx) {
+
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedFunctionStatement(ctx, line, column);
+        return super.visitChildren(ctx); 
+    }
+
+    @Override public T visitFunction_while_statement(RubyParser.Function_while_statementContext ctx) { 
+       
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedFunctionStatement(ctx, line, column);
+        return  super.visitChildren(ctx); 
+    }
+
+    @Override public T visitFunction_for_statement(RubyParser.Function_for_statementContext ctx) { 
+
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedFunctionStatement(ctx, line, column);
+        return super.visitChildren(ctx); 
+    }
+
+
     @Override
     public T visitExpression(RubyParser.ExpressionContext ctx) {
         if((ctx.getChild(0).getClass().toString()).equals("class RubyParser$Function_chainContext")){
@@ -131,6 +181,21 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
             }
         }
 
+        return super.visitChildren(ctx);
+    }
+
+    @Override public T visitFunction_name(RubyParser.Function_nameContext ctx) {
+        if((ctx.getParent().getClass().toString()).equals("class RubyParser$Function_definition_headerContext")){
+            String id = ctx.getChild(0).getChild(0).toString();
+            if(id.length() > 10){
+                int line = ctx.start.getLine();
+                int column = ctx.start.getCharPositionInLine();
+                String message = "\nMal olor encontrado, el nombre de la funcion " + id+ " es muy largo linea: " + line + " Columna: " + column + "\n"
+                        + "Se recomienda cambiar este identificador por uno mas sencillo, esto hara el codigo mas legible\n";
+                manager.AddCodeSmell(SMELL.IdTooLong, line, column, message);
+
+            }
+        }
         return super.visitChildren(ctx);
     }
 
@@ -187,12 +252,84 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
                 methodFinalLine = ctx.start.getLine();
                 if((methodFinalLine - methodStartLine) > maxMethodLongitude){
                     String message = "\nMal olor encontrado, la funcion \'" + returnsFunctionName + "\' en linea " + methodStartLine + " Columna: " + methodStartColumn + " Es demasiado larga\n"
-                                + "Se recomienda revisar la funcionalidad de este metodo e intentar dividirlo en varios metodos que trabajen en conjunto.\n";
+                                + "Se recomienda revisar la funcionalidad de este metodo e intentar dividirlo en varios metodos\nque trabajen en conjunto.\n";
                                     manager.AddCodeSmell(SMELL.MethodTooLong, methodStartLine, methodStartColumn, message);
                 }
             }
         } 
         return super.visitChildren(ctx); 
+    }
+    
+    public void nestedStatement(RuleContext ctx, int line, int column){
+        RuleContext parentStructure = ctx;
+        String parentString;
+        int nestedCounter = 1;
+        int i;
+        while(true){
+            i = 0;
+            while(parentStructure != null && i < 4){
+                parentStructure = parentStructure.parent;
+                i++;
+            }
+            if(parentStructure != null){
+                parentString = parentStructure.getClass().toString();
+                if(parentString.equals("class RubyParser$If_elsif_statementContext")){
+                    parentStructure = parentStructure.parent.parent;
+                    parentString = parentStructure.getClass().toString();
+                }
+                if(parentString.equals("class RubyParser$If_statementContext")
+                || parentString.equals("class RubyParser$Unless_statementContext")
+                || parentString.equals("class RubyParser$While_statementContext")
+                || parentString.equals("class RubyParser$For_statementContext")){
+                    nestedCounter++;
+                }
+                if(nestedCounter > 4){
+                    String message = "\nMal olor encontrado, estructura profundamente anidada, Linea: " + line + ", Columna: " + column + "\n"
+                    + "Se recomienda reestructurar la logica del codigo para evitar la complejidad de lectura.\n";
+                    manager.AddCodeSmell(SMELL.DeeplyNestedCode, line, column, message);
+                    break;  
+                }
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+    public void nestedFunctionStatement(RuleContext ctx, int line, int column) {
+        RuleContext parentStructure = ctx;
+        String parentString;
+        int nestedCounter = 1;
+        int i;
+        while (true) {
+            i = 0;
+            while (parentStructure != null && i < 4) {
+                parentStructure = parentStructure.parent;
+                i++;
+            }
+            if (parentStructure != null) {
+                parentString = parentStructure.getClass().toString();
+                if (parentString.equals("class RubyParser$Function_if_elsif_statementContext")) {
+                    parentStructure = parentStructure.parent.parent;
+                    parentString = parentStructure.getClass().toString();
+                }
+                if (parentString.equals("class RubyParser$Function_if_statementContext")
+                        || parentString.equals("class RubyParser$Function_unless_statementContext")
+                        || parentString.equals("class RubyParser$Function_while_statementContext")
+                        || parentString.equals("class RubyParser$Function_for_statementContext")) {
+                    nestedCounter++;
+                }
+                if (nestedCounter > 4) {
+                    String message = "\nMal olor encontrado, estructura profundamente anidada, Linea: " + line
+                            + ", Columna: " + column + "\n"
+                            + "Se recomienda reestructurar la logica del codigo para evitar la complejidad de lectura.\n";
+                    manager.AddCodeSmell(SMELL.DeeplyNestedCode, line, column, message);
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
     }
 
     @Override
@@ -211,6 +348,9 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
                     + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
             manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
         }
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedStatement(ctx, line, column);
         return visitChildren(ctx);
     }
 
@@ -218,7 +358,6 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public T visitIf_elsif_statement(RubyParser.If_elsif_statementContext ctx) {
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         String auxComparison = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
-        System.out.println(auxComparison + " "  + conditionalVariable);
         if(auxComparison.equals(conditionalVariable)){
             if(conditionalsVariableCounter < 4){
                 conditionalsVariableCounter += 1;
@@ -259,6 +398,10 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
                     + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
             manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
         }
+
+        int line = ctx.start.getLine();
+        int column = ctx.start.getCharPositionInLine();
+        nestedFunctionStatement(ctx, line, column);
         return visitChildren(ctx);
     }
 
@@ -266,7 +409,6 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
     public T visitFunction_if_elsif_statement(RubyParser.Function_if_elsif_statementContext ctx) {
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         String auxComparison = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
-        System.out.println(auxComparison + " "  + conditionalVariable);
         if(auxComparison.equals(conditionalVariable)){
             if(conditionalsVariableCounter < 4){
                 conditionalsVariableCounter += 1;

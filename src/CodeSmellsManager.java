@@ -1,8 +1,12 @@
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.io.*;
 
 public class CodeSmellsManager {
     ArrayList<CodeSmell> codeSmells = new ArrayList<>();
     ArrayList<Integer> enableSmells;
+    SMELL[] smellsList = {SMELL.MultipleReturn,SMELL.ExtremeChains,SMELL.DeadCodeReturn,SMELL.FunctionsNotCalled,SMELL.ReturnInLoop,SMELL.LongConditionals,SMELL.MethodTooLong,SMELL.IdTooLong,SMELL.DeeplyNestedCode};
+    String[] names ={"1. MULTIPLES SENTENCIAS RETURN","2. CADENAS DE LLAMADOS DE METODOS MUY LARGAS","3. CODIGO MUERTO","4. FUNCIONES NO LLAMADAS","5. SENTENCIAS RETURN DENTRO DE ESTRUCTURAS DE BUCLE","6. CONDICIONALES MUY LARGOS","7. METODOS DEMASIADO LARGOS Y COMPLEJOS","8. IDENTIFICADORES MUY LARGOS","9. CODIGO PROFUNDAMENTE ANIDADO"};
     CodeSmellsManager(ArrayList<Integer> _enableSmells) {
         enableSmells = _enableSmells;
     }
@@ -46,6 +50,43 @@ public class CodeSmellsManager {
         System.out.println(result);
     }
 
+   
+
+    public void Menu(ArrayList<Integer> userinput){
+        System.out.println("Se han encontrado "+ codeSmells.size()+" malos olores.");
+        Date objDate = new Date();
+        String text = "REPORTE DE MALOS OLORES \n";
+        String strDateFormat = "hh: mm: ss a dd-MMM-aaaa"; // El formato de fecha está especificado  
+        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+        text += "Generado el " + objSDF.format(objDate).toString() + "\n\n\n";
+        boolean flag = false;
+        for(int element : userinput){
+            flag = false;
+            text += names[(element - 1)] + "\n";
+            text += "-------------------------------------------------------------------------------------------- \n";
+                for(CodeSmell smell : codeSmells){
+                   if(smell.type == smellsList[element-1] ){
+                       text += smell.message+"\n";
+                       flag = true;
+                   }
+                }
+                if (!flag){
+                    text += "No se han encontrado malos olores de este tipo \n \n";
+                }
+                text += "\n\n\n\n\n";
+        }
+        try (FileWriter writer = new FileWriter("report.txt");
+		 BufferedWriter bw = new BufferedWriter(writer)) {
+
+		    bw.write(text);
+
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
+        }
+
+        
+    }
+
 
     private boolean isEnabled(CodeSmell smell) {
 
@@ -73,6 +114,10 @@ public class CodeSmellsManager {
         if (smell.type == SMELL.IdTooLong && enableSmells.contains(8)) {
             return true;
         }
+        if (smell.type == SMELL.DeeplyNestedCode && enableSmells.contains(9)) {
+            return true;
+        }
+
         return false;
     }
 }

@@ -1,44 +1,173 @@
-if(b == 0)
-    b = 0
-elsif(b == 1)
-    b = 0
-elsif(c == 2)
-    b = 0
-elsif(c == 3)
-    b = 0
-elsif(b == 4)
-    b = 0
-elsif(b == 5)
-    b = 0
-elsif(b == 6)
-    b = 0
-else
-    b = 0
+while(a==0)
+    if(i==9)
+        codigo1
+    end    
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                if(i==9)
+                    cod
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
 end
 
-
-def funckwaeebfawi()
-    abcdefghqiwpxcwn = 9
-    if(abcdefgh==9)
-        a += 9
-    end
+while(a==0)
+    if(i==9)
+        codigo1
+    end    
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                unless(i==9)
+                    cod
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
 end
 
-def func1()
-    a + 3
-    mewauifhgaweuig = test
-    if(a==9)
-        a += 9
-    end
-    if(a==9)
-        a += 9
-    end
-    puts "test"
-    return 1
-end 
-
-func()
-
-if(n<9)
-    puts "test"
+if(a==0)
+    if(i==9)
+        codigo1
+    end    
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                while(i==9)
+                    cod
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
 end
+
+while(a==0)
+    if(i==9)
+        codigo1
+    end    
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                for(i=0; i<9; i+=1)
+                    cod
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
+end
+
+def fun()
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                if(i==9)
+                    cod
+                    if(i==9)
+                        cod
+                    end 
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
+end
+
+def fun()
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                if(i==9)
+                    cod
+                    unless(i==9)
+                        cod
+                    else
+                        cod2
+                    end 
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
+end
+
+def fun()
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                if(i==9)
+                    cod
+                    while(i==9)
+                        cod
+                    end 
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
+end
+
+def fun()
+    if(i==9)
+        codigo2
+        if(i==9)
+            codigo3
+        elsif(u == 9)
+            while(o==9)
+                codigo4
+                if(i==9)
+                    cod
+                    for(i=0; i<9; i+=1)
+                        cod
+                        for(i=0; i<9; i+=1)
+                            cod
+                        end  
+                    end  
+                end  
+            end
+        else
+            codigo5
+        end 
+    end 
+end
+

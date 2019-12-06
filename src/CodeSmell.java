@@ -6,8 +6,9 @@
     FunctionsNotCalled, //4
     ReturnInLoop, //5
     LongConditionals, // 6
-    MethodTooLong, 
-    IdTooLong,
+    MethodTooLong, // 7 
+    IdTooLong,// 8
+    DeeplyNestedCode, //9
 }
 
 public class CodeSmell {
