@@ -35,7 +35,7 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         returnsFunctionLine = ctx.start.getLine();
         returnsFunctionColumn = ctx.start.getCharPositionInLine();
         returnsFunctionName = ctx.getChild(1).getChild(0).getChild(0).toString();
-        FunctionCreated func = new FunctionCreated(returnsFunctionName,returnsFunctionColumn,returnsFunctionLine);
+        FunctionCreated func = new FunctionCreated(returnsFunctionName, returnsFunctionLine, returnsFunctionColumn);
         functionsCreated.add(func);
         
         return visitChildren(ctx);
