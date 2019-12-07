@@ -53,6 +53,11 @@ public class CodeSmellsManager {
    
 
     public void Menu(ArrayList<Integer> userinput){
+
+        ToHTML htmlcode = new ToHTML(userinput,codeSmells);
+        htmlcode.createHTML();
+
+
         System.out.println("Se han encontrado "+ codeSmells.size()+" malos olores.");
         Date objDate = new Date();
         String text = "REPORTE DE MALOS OLORES \n";
@@ -65,6 +70,7 @@ public class CodeSmellsManager {
             text += names[(element - 1)] + "\n";
             text += "-------------------------------------------------------------------------------------------- \n";
                 for(CodeSmell smell : codeSmells){
+
                    if(smell.type == smellsList[element-1] ){
                        text += smell.message+"\n";
                        flag = true;
