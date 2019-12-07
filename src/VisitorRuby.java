@@ -242,7 +242,7 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
              for (FunctionCreated x : functionsCreated){
                 int line = x.line;
                 int column = x.column;
-                String message = "\nMal olor encontrado, la funcion \'" + x.name + "\' en linea " + line + " Columna: " + column + " nunca es llamada\n"
+                String message = "\nMal olor encontrado, la funcion \'" + x.name + "\' ubicada en linea " + line + " y Columna: " + column + " nunca es llamada\n"
                                 + "Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.\n";
                  manager.AddCodeSmell(SMELL.FunctionsNotCalled, line, column, message);              
             } 
@@ -251,7 +251,7 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
             if(StmtCtx.getClass().toString().equals("class RubyParser$Function_definition_bodyContext")){
                 methodFinalLine = ctx.start.getLine();
                 if((methodFinalLine - methodStartLine) > maxMethodLongitude){
-                    String message = "\nMal olor encontrado, la funcion \'" + returnsFunctionName + "\' en linea " + methodStartLine + " Columna: " + methodStartColumn + " Es demasiado larga\n"
+                    String message = "\nMal olor encontrado, la funcion \'" + returnsFunctionName + "\' en la linea " + methodStartLine + " y Columna: " + methodStartColumn + " Es demasiado larga\n"
                                 + "Se recomienda revisar la funcionalidad de este metodo e intentar dividirlo en varios metodos\nque trabajen en conjunto.\n";
                                     manager.AddCodeSmell(SMELL.MethodTooLong, methodStartLine, methodStartColumn, message);
                 }

@@ -1,8 +1,29 @@
 REPORTE DE MALOS OLORES 
-Generado el 02: 38: 17 PM 06-dic-PM
+Generado el 08: 11: 19 PM 06-dic-PM
 
 
 1. MULTIPLES SENTENCIAS RETURN
+-------------------------------------------------------------------------------------------- 
+
+Mal olor en la funcion: 'test' en Linea: 174, Columna: 0
+Se encontraron multiples returns, primer return multiple Linea: 178 Columna: 8
+Se recomienda crear una variable unica a retornar y asignarle a esto los valores que se pensaban retornar, posteriormente retornar esta variable al final de la funcion
+
+
+
+
+
+
+2. CADENAS DE LLAMADOS DE METODOS MUY LARGAS
+-------------------------------------------------------------------------------------------- 
+No se han encontrado malos olores de este tipo 
+ 
+
+
+
+
+
+3. CODIGO MUERTO
 -------------------------------------------------------------------------------------------- 
 No se han encontrado malos olores de este tipo 
  
@@ -14,21 +35,34 @@ No se han encontrado malos olores de este tipo
 4. FUNCIONES NO LLAMADAS
 -------------------------------------------------------------------------------------------- 
 
-Mal olor encontrado, la funcion 'fun' en linea 85 Columna: 0 nunca es llamada
+Mal olor encontrado, la funcion 'fun' ubicada en linea 85 y Columna: 0 nunca es llamada
 Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.
 
 
-Mal olor encontrado, la funcion 'fun' en linea 106 Columna: 0 nunca es llamada
+Mal olor encontrado, la funcion 'fun' ubicada en linea 106 y Columna: 0 nunca es llamada
 Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.
 
 
-Mal olor encontrado, la funcion 'fun' en linea 129 Columna: 0 nunca es llamada
+Mal olor encontrado, la funcion 'fun' ubicada en linea 129 y Columna: 0 nunca es llamada
 Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.
 
 
-Mal olor encontrado, la funcion 'fun' en linea 150 Columna: 0 nunca es llamada
+Mal olor encontrado, la funcion 'fun' ubicada en linea 150 y Columna: 0 nunca es llamada
 Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.
 
+
+Mal olor encontrado, la funcion 'test' ubicada en linea 174 y Columna: 0 nunca es llamada
+Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria eliminarla.
+
+
+
+
+
+
+5. SENTENCIAS RETURN DENTRO DE ESTRUCTURAS DE BUCLE
+-------------------------------------------------------------------------------------------- 
+No se han encontrado malos olores de este tipo 
+ 
 
 
 
@@ -40,6 +74,24 @@ Se recomienda crear un llamado a la funcion o en caso de que no sea necesaria el
 Mal olor encontrado, muchos condicionales en Linea: 23 Columna: 4 para la variable 
 Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.
 
+
+
+
+
+
+7. METODOS DEMASIADO LARGOS Y COMPLEJOS
+-------------------------------------------------------------------------------------------- 
+No se han encontrado malos olores de este tipo 
+ 
+
+
+
+
+
+8. IDENTIFICADORES MUY LARGOS
+-------------------------------------------------------------------------------------------- 
+No se han encontrado malos olores de este tipo 
+ 
 
 
 
