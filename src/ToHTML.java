@@ -9,7 +9,7 @@ public class ToHTML {
             "<html>\n" +
             "    <head>\n" +
             "        <meta charset=\"UTF-8\">\n" +
-            "        <title>Paisajes urbanos</title>\n" +
+            "        <title>Reporte</title>\n" +
             "        <link href=\"Estilos.css\" rel=\"stylesheet\" type=\"text/css\">\n" +
             "        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
             "    </head>\n" +
@@ -24,7 +24,7 @@ public class ToHTML {
             "                \n" +
             "            <nav id=\"nav\">\n" +
             "\t\t\t\t<ul>\t\t\t\t\t\t\t\n" +
-            "\t\t\t\t\t\t\t<li class=\"active\"><a class=\"active_link\" href=\"paisaje_urbano.html\" target=\"_self\">Reporte</a></li>\n" +
+            "\t\t\t\t\t\t\t<li class=\"active\"><a class=\"active_link\" href=\"report.html\" target=\"_self\">Reporte</a></li>\n" +
             "                            <li class=\"li_icons\"><a class=\"li_icons_a\" href=\"https://github.com/FernandoMorantes/ProyectoLenguajes\" target=\"_blank\"><i class=\"fa fa-github\" style=\"font-size:40px; padding: 12px 30px 1px 0px;; cursor: pointer;\" ></i></a></li>\n" +
             "\t\t\t\t</ul>\n" +
             "            </nav>\n" +

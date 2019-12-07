@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d5f9c93-3a37-4b6e-b9da-ca2a8dd8943a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ToHTML.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser.class" afterPath="$PROJECT_DIR$/out/production/ProyectoLenguajes/RubyParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ProyectoLenguajes.iml" afterPath="$PROJECT_DIR$/ProyectoLenguajes.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input/input.txt" afterPath="$PROJECT_DIR$/input/input.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report.txt" afterPath="$PROJECT_DIR$/report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CodeSmellsManager.java" afterPath="$PROJECT_DIR$/src/CodeSmellsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/VisitorRuby.java" afterPath="$PROJECT_DIR$/src/VisitorRuby.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ToHTML.java" afterPath="$PROJECT_DIR$/src/ToHTML.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +42,8 @@
       <file leaf-file-name="ToHTML.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ToHTML.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+            <state relative-caret-position="108">
+              <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/input/input.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="174" column="12" lean-forward="true" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+              <caret line="174" column="12" lean-forward="false" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -293,12 +286,12 @@
       <workItem from="1575584423401" duration="10609000" />
       <workItem from="1575608059413" duration="576000" />
       <workItem from="1575647016902" duration="13414000" />
-      <workItem from="1575667619285" duration="7933000" />
+      <workItem from="1575667619285" duration="8348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54730000" />
+    <option name="totallyTimeSpent" value="55145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -651,15 +644,15 @@
     <entry file="file://$PROJECT_DIR$/input/input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="174" column="12" lean-forward="true" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+          <caret line="174" column="12" lean-forward="false" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ToHTML.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+        <state relative-caret-position="108">
+          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
