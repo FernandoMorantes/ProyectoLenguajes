@@ -1,86 +1,45 @@
-while(a==0)
-    if(i==9)
-        codigo1
-    end    
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                if(i==9)
-                    cod
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
-end
-
-while(a==0)
-    if(i==9)
-        codigo1
-    end    
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                unless(i==9)
-                    cod
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
-end
-
 if(a==0)
-    if(i==9)
-        codigo1
-    end    
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                while(i==9)
-                    cod
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
+  if(c == 0)
+    c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+    c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
 end
 
 while(a==0)
-    if(i==9)
-        codigo1
-    end    
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                for(i=0; i<9; i+=1)
-                    cod
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
+  if(c == 0)
+    c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+    c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
+  if(c == 0)
+     c = 0
+  end
 end
+
 
 def fun()
     if(i==9)
@@ -90,92 +49,27 @@ def fun()
         elsif(u == 9)
             while(o==9)
                 codigo4
-                if(i==9)
-                    cod
-                    if(i==9)
-                        cod
-                    end 
-                end  
+                if(c == 0)
+                    c = 0
+                end
+                if(c == 0)
+                    c = 0
+                end
+                if(c == 0)
+                  c = 0
+                end
+                if(c == 0)
+                   c = 0
+                end
+                if(c == 0)
+                   c = 0
+                end
+                if(c == 0)
+                   c = 0
+                end
             end
         else
             codigo5
         end 
     end 
 end
-
-def fun()
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                if(i==9)
-                    cod
-                    unless(i==9)
-                        cod
-                    else
-                        cod2
-                    end 
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
-end
-
-def fun()
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                if(i==9)
-                    cod
-                    while(i==9)
-                        cod
-                    end 
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
-end
-
-def fun()
-    if(i==9)
-        codigo2
-        if(i==9)
-            codigo3
-        elsif(u == 9)
-            while(o==9)
-                codigo4
-                if(i==9)
-                    cod
-                    for(i=0; i<9; i+=1)
-                        cod
-                        for(i=0; i<9; i+=1)
-                            cod
-                        end  
-                    end  
-                end  
-            end
-        else
-            codigo5
-        end 
-    end 
-end
-
-def test()
-    if(a==f)
-        return 2
-    elsif(b==3)
-        return 3
-    end
-end
-
