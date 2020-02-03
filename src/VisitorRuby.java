@@ -123,6 +123,7 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         int line = ctx.start.getLine();
         int column = ctx.start.getCharPositionInLine();
         nestedStatement(ctx, line, column);
+
         return  super.visitChildren(ctx); 
     }
 
@@ -338,13 +339,24 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         conditionalsCounter = 0;
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         conditionalVariable = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        try{
+            String firstInLoop = ctx.parent.parent.parent.parent.parent.getClass().toString();
+            String inLoop = ctx.parent.parent.parent.parent.getClass().toString();
+            if(firstInLoop.equals("class RubyParser$While_statementContext") || firstInLoop.equals("class RubyParser$For_statementContext")){
+                ifstatementCounter = 0;
+            }else if(inLoop.equals("class RubyParser$While_statementContext") || inLoop.equals("class RubyParser$For_statementContext") || inLoop.equals("class RubyParser$If_statementContext")){
+                ifstatementCounter = 0;
+            }
+        }catch (Exception ex) {
+
+        }
         if(ifstatementCounter < 4){
             ifstatementCounter += 1;
         }else if(ifstatementCounter == 4){
             ifstatementCounter += 1;
             int line = ctx.start.getLine();
             int column = ctx.start.getCharPositionInLine();
-            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable " + "\n"
+            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable \'" + conditionalVariable + "\'. \n"
                     + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
             manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
         }
@@ -388,13 +400,17 @@ public class VisitorRuby<T> extends RubyBaseVisitor<T> {
         conditionalsCounter = 0;
         ParseTree comparison = ctx.getChild(1).getChild(0).getChild(1).getChild(0).getChild(0);
         conditionalVariable = comparison.getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).toString();
+        String inLoop = ctx.parent.parent.parent.parent.getClass().toString();
+        if(inLoop.equals("class RubyParser$Function_while_statementContext") || inLoop.equals("class RubyParser$Function_for_statementContext") || inLoop.equals("class RubyParser$Function_if_statementContext")){
+            ifstatementCounter = 0;
+        }
         if(ifstatementCounter < 4){
             ifstatementCounter += 1;
         }else if(ifstatementCounter == 4){
             ifstatementCounter += 1;
             int line = ctx.start.getLine();
             int column = ctx.start.getCharPositionInLine();
-            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable " + "\n"
+            String message = "\nMal olor encontrado, muchos condicionales en Linea: " + line + " Columna: " + column + " para la variable \'" + conditionalVariable + "\'. \n"
                     + "Se recomienda separar las condiciones en bucles o metodos diferentes segun lo permita la logica del programa.\n";
             manager.AddCodeSmell(SMELL.LongConditionals, line, column, message);
         }
